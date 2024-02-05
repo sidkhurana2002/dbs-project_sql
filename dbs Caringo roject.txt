@@ -1,0 +1,621 @@
+CREATE TABLE Registration_Details (
+--   email VARCHAR(50) PRIMARY KEY,
+--   password VARCHAR(50) NOT NULL
+-- );
+--  
+--  
+--  
+--  
+-- CREATE TABLE Customer (
+--   first_name VARCHAR(50) NOT NULL,
+--   middle_name VARCHAR(50),
+--   last_name VARCHAR(50) NOT NULL,
+--   street VARCHAR(255) NOT NULL,
+--   city VARCHAR(100) NOT NULL,
+--   state_province VARCHAR(100),
+--   country VARCHAR(100) NOT NULL,
+--   postal_code VARCHAR(20) NOT NULL,
+--   driving_license_id VARCHAR(50) NOT NULL,
+--   email VARCHAR(50) PRIMARY KEY,
+--   FOREIGN KEY (email) REFERENCES Registration_Details(email)
+-- );
+
+-- CREATE TABLE Phone (
+--   
+--   phone_number VARCHAR(15) NOT NULL,
+--   email VARCHAR(50) NOT NULL,
+--   FOREIGN KEY (email) REFERENCES Customer(email)
+-- );
+
+-- CREATE TABLE Owner (
+--   owner_id INT PRIMARY KEY AUTO_INCREMENT,
+--   first_name VARCHAR(50) NOT NULL,
+--   middle_name VARCHAR(50),
+--   last_name VARCHAR(50) NOT NULL
+-- );
+
+-- CREATE TABLE CarCategory (
+--   model_id INT PRIMARY KEY AUTO_INCREMENT,
+--   number_of_persons INT NOT NULL,
+--   number_of_luggage INT NOT NULL,
+--   cost_per_day DECIMAL(10,2) NOT NULL,
+--   late_fee_per_hour DECIMAL(10,2) NOT NULL
+-- );
+
+-- CREATE TABLE Car (
+--   car_number VARCHAR(10) PRIMARY KEY,
+--   owner_id INT NOT NULL,
+--   model_id INT NOT NULL,
+--   availability_car_flag INT NOT NULL,
+--   email VARCHAR(50) NOT NULL,
+--   FOREIGN KEY (owner_id) REFERENCES Owner(owner_id),
+--   FOREIGN KEY (model_id) REFERENCES CarCategory(model_id),
+--   FOREIGN KEY (email) REFERENCES Customer(email)
+-- );
+
+-- CREATE TABLE Booking (
+--   booking_id INT PRIMARY KEY AUTO_INCREMENT,
+--   renter_email_id VARCHAR(50) NOT NULL,
+--   lender_email_id VARCHAR(50) NOT NULL,
+--   start_time DATETIME NOT NULL,
+--   end_time DATETIME NOT NULL,
+--   car_number VARCHAR(10) NOT NULL,
+--   FOREIGN KEY (renter_email_id) REFERENCES Registration_Details(email),
+--   FOREIGN KEY (lender_email_id) REFERENCES Registration_Details(email),
+--   FOREIGN KEY (car_number) REFERENCES Car(car_number)
+-- );
+
+-- CREATE TABLE Payment (
+--   payment_id INT PRIMARY KEY AUTO_INCREMENT,
+--   booking_id INT NOT NULL,
+--   payment_status VARCHAR(20) NOT NULL,
+--   amount DECIMAL(10,2) NOT NULL,
+--   FOREIGN KEY (booking_id) REFERENCES Booking(booking_id)
+-- );
+
+-- CREATE TABLE Insurance (
+--   insurance_id INT PRIMARY KEY AUTO_INCREMENT,
+--   name VARCHAR(50) NOT NULL,
+--   type VARCHAR(50) NOT NULL,
+--   monthly_payment DECIMAL(10,2) NOT NULL,
+--   mature_money DECIMAL(10,2) NOT NULL
+-- );
+
+-- CREATE TABLE Discount (
+--   discount_code VARCHAR(20) PRIMARY KEY,
+--   discount_name VARCHAR(50) NOT NULL,
+--   expiry_date DATE NOT NULL,
+--   percent_discount DECIMAL(4,2) NOT NULL
+-- );
+
+-- CREATE TABLE Review (
+--   review_id INT PRIMARY KEY AUTO_INCREMENT,
+--   stars INT NOT NULL,
+--   car_number VARCHAR(10) NOT NULL,
+--   FOREIGN KEY (car_number) REFERENCES Car(car_number)
+-- );
+
+-- CREATE TABLE coversInsurance (
+--   booking_id INT NOT NULL,
+--   insurance_id INT NOT NULL,
+--   PRIMARY KEY (booking_id, insurance_id),
+--   FOREIGN KEY (booking_id) REFERENCES Booking(booking_id),
+--   FOREIGN KEY (insurance_id) REFERENCES Insurance(insurance_id)
+-- );
+
+-- CREATE TABLE coversDiscount (
+--   booking_id INT NOT NULL,
+--   discount_code VARCHAR(20) NOT NULL,
+--   PRIMARY KEY (booking_id, discount_code),
+--   FOREIGN KEY (booking_id) REFERENCES Booking(booking_id),
+--   FOREIGN KEY (discount_code) REFERENCES Discount(discount_code)
+-- );
+
+-- -- Inserting Registration_Details
+-- INSERT INTO Registration_Details (email, password) VALUES ('user1@example.com', 'password1');
+-- INSERT INTO Registration_Details (email, password) VALUES ('user2@example.com', 'password2');
+-- INSERT INTO Registration_Details (email, password) VALUES ('user3@example.com', 'password3');
+-- INSERT INTO Registration_Details (email, password) VALUES ('user4@example.com', 'password4');
+-- INSERT INTO Registration_Details (email, password) VALUES ('user5@example.com', 'password5');
+-- INSERT INTO Registration_Details (email, password) VALUES ('user6@example.com', 'password6');
+-- INSERT INTO Registration_Details (email, password) VALUES ('user7@example.com', 'password7');
+-- INSERT INTO Registration_Details (email, password) VALUES ('user8@example.com', 'password8');
+-- INSERT INTO Registration_Details (email, password) VALUES ('user9@example.com', 'password9');
+-- INSERT INTO Registration_Details (email, password) VALUES ('user10@example.com', 'password10');
+
+-- INSERT INTO Customer (first_name, middle_name, last_name, street, city, state_province, country, postal_code, driving_license_id, email)
+-- VALUES ('John', 'William', 'Doe', '123 Main St', 'Anytown', 'CA', 'USA', '12345', 'ABC123456789', 'user1@example.com');
+
+-- INSERT INTO Customer (first_name, middle_name, last_name, street, city, state_province, country, postal_code, driving_license_id, email)
+-- VALUES ('Jane', 'Elizabeth', 'Smith', '456 Maple Ave', 'Somewhere', 'NY', 'USA', '67890', 'XYZ987654321', 'user2@example.com');
+
+-- INSERT INTO Customer (first_name, middle_name, last_name, street, city, state_province, country, postal_code, driving_license_id, email)
+-- VALUES ('Robert', '', 'Johnson', '789 Oak St', 'Nowhere', 'IL', 'USA', '54321', 'DEF456789123', 'user3@example.com');
+
+-- INSERT INTO Customer (first_name, middle_name, last_name, street, city, state_province, country, postal_code, driving_license_id, email)
+-- VALUES ('Alice', 'Marie', 'Brown', '555 Elm St', 'Anywhere', 'CA', 'USA', '98765', 'GHI789123456', 'user4@example.com');
+
+-- INSERT INTO Customer (first_name, middle_name, last_name, street, city, state_province, country, postal_code, driving_license_id, email)
+-- VALUES ('Michael', 'Anthony', 'Taylor', '321 Pine St', 'Somewhere', 'TX', 'USA', '45678', 'JKL123456789', 'user5@example.com');
+
+-- INSERT INTO Customer (first_name, middle_name, last_name, street, city, state_province, country, postal_code, driving_license_id, email)
+-- VALUES ('Emily', 'Anne', 'Wilson', '222 Cedar Ave', 'Nowhere', 'WA', 'USA', '24680', 'MNO987654321', 'user6@example.com');
+
+-- INSERT INTO Customer (first_name, middle_name, last_name, street, city, state_province, country, postal_code, driving_license_id, email)
+-- VALUES ('William', 'Henry', 'Jones', '444 Oak St', 'Anywhere', 'NC', 'USA', '13579', 'PQR789123456', 'user7@example.com');
+
+-- INSERT INTO Customer (first_name, middle_name, last_name, street, city, state_province, country, postal_code, driving_license_id, email)
+-- VALUES ('Sarah', '', 'Lee', '777 Pine St', 'Somewhere', 'OH', 'USA', '23456', 'STU123456789', 'user8@example.com');
+
+-- INSERT INTO Customer (first_name, middle_name, last_name, street, city, state_province, country, postal_code, driving_license_id, email)
+-- VALUES ('David', 'Allen', 'Clark', '888 Maple Ave', 'Nowhere', 'GA', 'USA', '34567', 'VWX987654321', 'user9@example.com');
+
+-- INSERT INTO Customer (first_name, middle_name, last_name, street, city, state_province, country, postal_code, driving_license_id, email)
+-- VALUES ('Jennifer', 'Louise', 'Taylor', '999 Cedar Ave', 'Anywhere', 'IL', 'USA', '43210', 'YZA123456789', 'user10@example.com');
+
+-- INSERT INTO Phone (phone_number, email) VALUES ('1234567890', 'user1@example.com');
+-- INSERT INTO Phone (phone_number, email) VALUES ('2345678901', 'user2@example.com');
+-- INSERT INTO Phone (phone_number, email) VALUES ('3456789012', 'user3@example.com');
+-- INSERT INTO Phone (phone_number, email) VALUES ('4567890123', 'user4@example.com');
+-- INSERT INTO Phone (phone_number, email) VALUES ('5678901234', 'user5@example.com');
+-- INSERT INTO Phone (phone_number, email) VALUES ('6789012345', 'user6@example.com');
+-- INSERT INTO Phone (phone_number, email) VALUES ('7890123456', 'user7@example.com');
+-- INSERT INTO Phone (phone_number, email) VALUES ('8901234567', 'user8@example.com');
+-- INSERT INTO Phone (phone_number, email) VALUES ('9012345678', 'user9@example.com');
+-- INSERT INTO Phone (phone_number, email) VALUES ('0123456789', 'user10@example.com');
+
+-- INSERT INTO Owner (owner_id, first_name, middle_name, last_name)
+-- VALUES (1, 'siddhant', 'Adam', 'Doe');
+
+-- INSERT INTO Owner (owner_id, first_name, last_name)
+-- VALUES (2, 'sandeep', 'Smith');
+
+-- INSERT INTO Owner (owner_id, first_name, middle_name, last_name)
+-- VALUES (3, 'nirvana', 'Michael', 'Lee');
+
+-- INSERT INTO CarCategory (model_id, number_of_persons, number_of_luggage, cost_per_day, late_fee_per_hour)
+-- VALUES (1, 5, 2, 100.00, 10.00),
+--        (2, 4, 3, 120.00, 12.00),
+--        (3, 2, 1, 80.00, 8.00),
+--        (4, 7, 3, 150.00, 15.00),
+--        (5, 5, 2, 110.00, 11.00),
+--        (6, 4, 3, 130.00, 13.00),
+--        (7, 2, 1, 90.00, 9.00),
+--        (8, 7, 3, 160.00, 16.00),
+--        (9, 5, 2, 120.00, 12.00),
+--        (10, 4, 3, 140.00, 14.00);
+--        
+-- INSERT INTO Car (car_number, owner_id, model_id, availability_car_flag, email)
+-- VALUES ('ABC123', 1, 1, 1, 'user1@example.com');
+
+-- INSERT INTO Car (car_number, owner_id, model_id, availability_car_flag, email)
+-- VALUES ('DEF456', 2, 2, 0, 'user2@example.com');
+
+-- INSERT INTO Car (car_number, owner_id, model_id, availability_car_flag, email)
+-- VALUES ('GHI789', 3, 3, 1, 'user3@example.com');
+
+-- INSERT INTO Car (car_number, owner_id, model_id, availability_car_flag, email)
+-- VALUES ('JKL123', 1, 4, 1, 'user1@example.com');
+
+-- INSERT INTO Car (car_number, owner_id, model_id, availability_car_flag, email)
+-- VALUES ('MNO987', 2, 1, 0, 'user2@example.com');
+
+-- INSERT INTO Car (car_number, owner_id, model_id, availability_car_flag, email)
+-- VALUES ('PQR789', 3, 2, 1, 'user3@example.com');
+
+-- INSERT INTO Car (car_number, owner_id, model_id, availability_car_flag, email)
+-- VALUES ('STU123', 1, 3, 0, 'user1@example.com');
+
+-- INSERT INTO Car (car_number, owner_id, model_id, availability_car_flag, email)
+-- VALUES ('VWX987', 2, 4, 1, 'user2@example.com');
+
+-- INSERT INTO Car (car_number, owner_id, model_id, availability_car_flag, email)
+-- VALUES ('YZA123', 3, 1, 1, 'user3@example.com');
+
+-- INSERT INTO Car (car_number, owner_id, model_id, availability_car_flag, email)
+-- VALUES ('MAL123', 1, 4, 1, 'user1@example.com');
+
+-- INSERT INTO Booking (renter_email_id, lender_email_id, start_time, end_time, car_number)
+-- VALUES ('user1@example.com', 'user2@example.com', '2023-05-01 08:00:00', '2023-05-03 12:00:00', 'ABC123');
+
+-- INSERT INTO Booking (renter_email_id, lender_email_id, start_time, end_time, car_number)
+-- VALUES ('user2@example.com', 'user1@example.com', '2023-05-02 14:00:00', '2023-05-03 17:00:00', 'DEF456');
+
+-- INSERT INTO Booking (renter_email_id, lender_email_id, start_time, end_time, car_number)
+-- VALUES ('user3@example.com', 'user1@example.com', '2023-05-03 09:00:00', '2023-05-05 11:00:00', 'GHI789');
+
+-- INSERT INTO Booking (renter_email_id, lender_email_id, start_time, end_time, car_number)
+-- VALUES ('user1@example.com', 'user2@example.com', '2023-05-05 13:00:00', '2023-05-07 15:00:00', 'JKL123');
+
+-- INSERT INTO Booking (renter_email_id, lender_email_id, start_time, end_time, car_number)
+-- VALUES ('user2@example.com', 'user3@example.com', '2023-05-06 10:00:00', '2023-05-09 12:00:00', 'MNO987');
+
+-- INSERT INTO Booking (renter_email_id, lender_email_id, start_time, end_time, car_number)
+-- VALUES ('user3@example.com', 'user1@example.com', '2023-05-09 15:00:00', '2023-05-11 18:00:00', 'PQR789');
+
+-- INSERT INTO Booking (renter_email_id, lender_email_id, start_time, end_time, car_number)
+-- VALUES ('user1@example.com', 'user2@example.com', '2023-05-12 08:00:00', '2023-05-14 12:00:00', 'STU123');
+
+-- INSERT INTO Booking (renter_email_id, lender_email_id, start_time, end_time, car_number)
+-- VALUES ('user2@example.com', 'user3@example.com', '2023-05-15 14:00:00', '2023-05-17 17:00:00', 'VWX987');
+
+-- INSERT INTO Booking (renter_email_id, lender_email_id, start_time, end_time, car_number)
+-- VALUES ('user3@example.com', 'user1@example.com', '2023-05-18 09:00:00', '2023-05-20 11:00:00', 'YZA123');
+
+-- INSERT INTO Payment (booking_id, payment_status, amount)
+-- VALUES (1, 'Paid', 500.00);
+
+-- INSERT INTO Payment (booking_id, payment_status, amount)
+-- VALUES (2, 'Paid', 350.00);
+
+-- INSERT INTO Payment (booking_id, payment_status, amount)
+-- VALUES (3, 'Pending', 800.00);
+
+-- INSERT INTO Payment (booking_id, payment_status, amount)
+-- VALUES (4, 'Paid', 650.00);
+
+-- INSERT INTO Payment (booking_id, payment_status, amount)
+-- VALUES (5, 'Pending', 1000.00);
+
+-- INSERT INTO Payment (booking_id, payment_status, amount)
+-- VALUES (6, 'Paid', 900.00);
+
+-- INSERT INTO Payment (booking_id, payment_status, amount)
+-- VALUES (7, 'Pending', 400.00);
+
+-- INSERT INTO Payment (booking_id, payment_status, amount)
+-- VALUES (8, 'Paid', 750.00);
+
+-- INSERT INTO Payment (booking_id, payment_status, amount)
+-- VALUES (9, 'Pending', 1200.00);
+
+-- INSERT INTO Discount (discount_code, discount_name, expiry_date, percent_discount) 
+-- VALUES 
+-- ('DISCOUNT10', '10% off for new customers', '2023-06-30', 10.00),
+-- ('SUMMER15', '15% off for summer season', '2023-09-30', 15.00),
+-- ('SALE20', '20% off on select cars', '2023-05-31', 20.00);
+
+
+-- INSERT INTO Review(stars, car_number) VALUES (4, 'ABC123');
+-- INSERT INTO Review(stars, car_number) VALUES (5, 'DEF456');
+-- INSERT INTO Review(stars, car_number) VALUES (3, 'GHI789');
+-- INSERT INTO Review(stars, car_number) VALUES (5, 'JKL123');
+-- INSERT INTO Review(stars, car_number) VALUES (4, 'MNO987');
+-- INSERT INTO Review(stars, car_number) VALUES (2, 'PQR789');
+-- INSERT INTO Review(stars, car_number) VALUES (5, 'STU123');
+-- INSERT INTO Review(stars, car_number) VALUES (4, 'VWX987');
+-- INSERT INTO Review(stars, car_number) VALUES (3, 'YZA123');
+
+-- INSERT INTO Insurance (name, type, monthly_payment, mature_money)
+-- VALUES
+-- ("Car Insurance A", "Comprehensive", 100.00, 20000.00),
+-- ("Car Insurance B", "Third Party", 50.00, 15000.00),
+-- ("Car Insurance C", "Third Party Fire and Theft", 75.00, 18000.00);
+
+-- INSERT INTO coversInsurance (booking_id, insurance_id) VALUES (1, 1);
+-- INSERT INTO coversInsurance (booking_id, insurance_id) VALUES (2, 2);
+-- INSERT INTO coversInsurance (booking_id, insurance_id) VALUES (3, 3);
+-- -- INSERT INTO coversInsurance (booking_id, insurance_id) VALUES (4, 4);
+-- -- INSERT INTO coversInsurance (booking_id, insurance_id) VALUES (5, 5);
+
+-- INSERT INTO coversDiscount (booking_id, discount_code) 
+-- VALUES 
+-- (1, 'DISCOUNT10'),
+-- (3, 'SUMMER15'),
+-- (5, 'SALE20');
+
+-- -- login
+-- DELIMITER $$
+-- CREATE PROCEDURE loginn(
+-- IN email_input VARCHAR(50),
+-- IN password_input VARCHAR(50),
+-- OUT success INT
+-- )
+-- BEGIN
+-- DECLARE password_hash VARCHAR(50);
+-- SELECT password INTO password_hash FROM Registration_Details WHERE email = email_input;
+-- IF password_hash IS NULL THEN
+-- SET success = 0;
+-- ELSEIF password_hash <> password_input THEN
+-- SET success = 0;
+-- ELSE
+-- SET success = 1;
+-- END IF;
+-- END$$
+-- DELIMITER ;
+
+-- CALL loginn('user1@eample.com', 'password1', @success);
+-- SELECT @success;
+
+
+
+-- DELIMITER //
+-- -- signup
+-- CREATE PROCEDURE signup(
+--   IN p_first_name VARCHAR(50), 
+--   IN p_middle_name VARCHAR(50), 
+--   IN p_last_name VARCHAR(50), 
+--   IN p_street VARCHAR(255), 
+--   IN p_city VARCHAR(100), 
+--   IN p_state_province VARCHAR(100), 
+--   IN p_country VARCHAR(100), 
+--   IN p_postal_code VARCHAR(20), 
+--   IN p_driving_license_id VARCHAR(50), 
+--   IN p_email VARCHAR(50), 
+--   IN p_password VARCHAR(50),
+--   IN p_phone VARCHAR(20),
+--   OUT p_success BOOLEAN
+-- )
+-- BEGIN
+--   DECLARE email_count INT;
+--   SELECT COUNT(*) INTO email_count FROM Registration_Details WHERE email = p_email;
+--   IF email_count = 0 THEN
+--     INSERT INTO Registration_Details (email, password) VALUES (p_email, p_password);
+--     INSERT INTO Customer (first_name, middle_name, last_name, street, city, state_province, country, postal_code, driving_license_id, email) 
+--     VALUES (p_first_name, p_middle_name, p_last_name, p_street, p_city, p_state_province, p_country, p_postal_code, p_driving_license_id, p_email);
+--     Insert into phone values(p_phone,p_email);
+--     SET p_success = TRUE;
+--   ELSE
+--     SET p_success = FALSE;
+--   END IF;
+-- END//
+
+-- DELIMITER ;
+
+
+-- DELIMITER //
+-- CREATE PROCEDURE lendd_car(IN car_number VARCHAR(10), IN model_id INT, IN availability_car_flag INT, IN owner_first_name VARCHAR(50), IN owner_middle_name VARCHAR(50), IN owner_last_name VARCHAR(50), IN email VARCHAR(50))
+-- BEGIN
+--     -- Insert owner details into Owner table
+--     INSERT INTO Owner (first_name, middle_name, last_name) VALUES (owner_first_name, owner_middle_name, owner_last_name);
+--     
+--     -- Get owner ID
+--     SET @owner_id = LAST_INSERT_ID();
+--     
+--     -- Insert car details into Car table
+--     INSERT INTO Car (car_number, owner_id, model_id, availability_car_flag, email) VALUES (car_number, @owner_id, model_id, availability_car_flag, email);
+-- END //
+-- DELIMITER ;
+
+
+
+-- -- search all available cars
+-- DELIMITER //
+
+-- CREATE PROCEDURE search_available_cars()
+-- BEGIN
+-- SELECT Car.car_number, Car.model_id, CarCategory.number_of_persons, CarCategory.cost_per_day
+-- FROM Car
+-- INNER JOIN CarCategory ON Car.model_id = CarCategory.model_id
+-- WHERE Car.availability_car_flag = 1;
+-- END//
+
+-- DELIMITER ;
+
+-- -- CALL search_available_cars();
+
+-- -- for booking a car
+-- SET SQL_SAFE_UPDATES=0;
+
+-- DELIMITER //
+-- CREATE PROCEDURE bookke_car_final(
+--   IN renter_email VARCHAR(50),
+--   IN start_time DATETIME,
+--   IN end_time DATETIME,
+--   IN car_number VARCHAR(10),
+--   IN insurance_name VARCHAR(50),
+--   IN discount_code VARCHAR(20),
+--   OUT total_amount DECIMAL(10,2)
+-- )
+-- BEGIN
+--   DECLARE car_category_cost DECIMAL(10,2);
+--   DECLARE car_late_fee DECIMAL(10,2);
+--   DECLARE booking_hours INT;
+--   DECLARE insurance_amount DECIMAL(10,2);
+--   DECLARE discount_percent DECIMAL(4,2);
+--   DECLARE discount_amount DECIMAL(10,2);
+--   DECLARE car_owner_email VARCHAR(50);
+--   
+--   SELECT cost_per_day, late_fee_per_hour INTO car_category_cost, car_late_fee FROM CarCategory 
+--   WHERE model_id = (SELECT model_id FROM Car WHERE car_number = car_number LIMIT 1);
+--   
+--   SET booking_hours = TIMESTAMPDIFF(HOUR, start_time, end_time);
+--   
+--   SELECT email INTO car_owner_email FROM Car WHERE car_number = car_number LIMIT 1;
+--   
+--   SELECT monthly_payment INTO insurance_amount FROM Insurance WHERE name = insurance_name LIMIT 1;
+--   
+--   SELECT percent_discount INTO discount_percent FROM Discount WHERE discount_code = discount_code LIMIT 1;
+--   
+--   SET discount_amount = (car_category_cost * discount_percent)/100;
+--   
+--   SET total_amount = (car_category_cost * booking_hours) + (car_late_fee * booking_hours) + insurance_amount - discount_amount;
+--   
+--   INSERT INTO Booking (renter_email_id, lender_email_id, start_time, end_time, car_number) 
+--   VALUES (renter_email, car_owner_email, start_time, end_time, car_number);
+--   
+--   INSERT INTO coversInsurance (booking_id, insurance_id) 
+--   VALUES (LAST_INSERT_ID(), (SELECT insurance_id FROM Insurance WHERE name = insurance_name LIMIT 1));
+--   
+--   INSERT INTO coversDiscount (booking_id, discount_code) 
+--   VALUES (LAST_INSERT_ID(), discount_code);
+--   
+--   INSERT INTO Payment (booking_id, payment_status, amount) 
+--   VALUES (LAST_INSERT_ID(), 'Pending', total_amount);
+--   
+--   UPDATE Car SET availability_car_flag = 0 WHERE car_number = car_number;
+-- END //
+-- DELIMITER ;
+
+
+
+
+
+-- -- updating car details like modelid and availability by giving car number and email as input
+-- DELIMITER //
+-- CREATE PROCEDURE UpdateCarDetails(
+--     IN car_number_in VARCHAR(10),
+--     IN email_in VARCHAR(50),
+--     IN model_id_in INT,
+--     IN availability_car_flag_in INT
+-- )
+-- BEGIN
+--     DECLARE car_owner_id INT;
+--     DECLARE car_count INT;
+--     
+--     -- Get the owner ID of the car
+--     SELECT owner_id INTO car_owner_id FROM Car WHERE car_number = car_number_in AND email = email_in;
+--     
+--     -- Check if the car exists and belongs to the customer
+--     SELECT COUNT(*) INTO car_count FROM Car WHERE car_number = car_number_in AND email = email_in;
+--     IF car_count = 0 THEN
+--         SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Car does not exist or does not belong to the customer';
+--     END IF;
+--     
+--     -- Update the car details
+--     UPDATE Car SET model_id = model_id_in, availability_car_flag = availability_car_flag_in 
+--     WHERE car_number = car_number_in AND email = email_in;
+--     
+--     SELECT CONCAT('Car details updated successfully for car number ', car_number_in) AS message;
+--     
+-- END //
+-- DELIMITER ;
+
+--  CALL UpdateCarDetails('MNO987', 'user2@example.com', 1 , 1);
+
+-- -- update customer profile with old email
+-- DELIMITER //
+-- CREATE PROCEDURE UpdateCustomerProfile(
+--     IN email_in VARCHAR(50),
+--     IN password_in VARCHAR(50),
+--     IN first_name_in VARCHAR(50),
+--     IN middle_name_in VARCHAR(50),
+--     IN last_name_in VARCHAR(50),
+--     IN street_in VARCHAR(255),
+--     IN city_in VARCHAR(100),
+--     IN state_province_in VARCHAR(100),
+--     IN country_in VARCHAR(100),
+--     IN postal_code_in VARCHAR(20),
+--     IN driving_license_id_in VARCHAR(50),
+--     IN phone_number_in VARCHAR(15)
+-- )
+-- BEGIN
+--     DECLARE email_exists INT;
+--     DECLARE phone_exists INT;
+--     
+--     -- Check if email exists in Registration_Details table
+--     SELECT COUNT(*) INTO email_exists FROM Registration_Details WHERE email = email_in;
+--     IF email_exists = 0 THEN
+--         SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Email does not exist in Registration_Details table';
+--     END IF;
+--     
+--     -- Update password in Registration_Details table
+--     UPDATE Registration_Details SET password = password_in WHERE email = email_in;
+--     
+--     -- Update Customer table
+--     UPDATE Customer SET 
+--         first_name = first_name_in,
+--         middle_name = middle_name_in,
+--         last_name = last_name_in,
+--         street = street_in,
+--         city = city_in,
+--         state_province = state_province_in,
+--         country = country_in,
+--         postal_code = postal_code_in,
+--         driving_license_id = driving_license_id_in 
+--     WHERE email = email_in;
+--     
+--     -- Update Phone table
+--     IF phone_number_in IS NOT NULL THEN
+--         -- Check if phone number exists for the customer
+--         SELECT COUNT(*) INTO phone_exists FROM Phone WHERE email = email_in;
+--         IF phone_exists = 0 THEN
+--             INSERT INTO Phone (phone_number, email) VALUES (phone_number_in, email_in);
+--         ELSE
+--             UPDATE Phone SET phone_number = phone_number_in WHERE email = email_in;
+--         END IF;
+--     END IF;
+--     
+--     SELECT CONCAT('Customer profile updated successfully for email ', email_in) AS message;
+-- END //
+-- DELIMITER ;
+
+
+
+-- -- procedure for viewing particular customer booking
+-- DELIMITER //
+
+-- CREATE PROCEDURE show_bookings_by_customer(IN customer_email VARCHAR(50))
+-- BEGIN
+--   SELECT booking_id, renter_email_id, lender_email_id, start_time, end_time, car_number 
+--   FROM Booking 
+--   WHERE renter_email_id = customer_email OR lender_email_id = customer_email;
+-- END//
+
+-- DELIMITER ;
+
+-- -- CALL show_bookings_by_customer('user1@example.com');
+
+
+-- DELIMITER //
+
+-- CREATE PROCEDURE show_discounts()
+-- BEGIN
+--   SELECT discount_code, discount_name, expiry_date, percent_discount 
+--   FROM Discount;
+-- END//
+
+-- DELIMITER ;
+
+-- -- CALL show_discounts();
+
+-- DELIMITER //
+
+-- CREATE PROCEDURE show_all_insurance()
+-- BEGIN
+--   SELECT insurance_id, name, type, monthly_payment, mature_money
+--   FROM Insurance;
+-- END//
+
+-- DELIMITER ;
+
+
+
+-- -- call show_all_insurance(); 
+
+
+
+-- DELIMITER //
+
+-- CREATE PROCEDURE get_customer_cars(
+--   IN p_customer_email VARCHAR(50)
+-- )
+-- BEGIN
+--   SELECT Car.car_number, Car.availability_car_flag, CarCategory.number_of_persons, CarCategory.number_of_luggage, CarCategory.cost_per_day, CarCategory.late_fee_per_hour
+--   FROM Car
+--   INNER JOIN CarCategory ON Car.model_id = CarCategory.model_id
+--   WHERE Car.email = p_customer_email;
+-- END//
+
+-- DELIMITER ;
+-- CALL get_customer_cars('user1@example.com');
+
+-- DELIMITER //
+-- CREATE PROCEDURE lendd_cars(IN car_number VARCHAR(10), IN number_of_persons INT, IN number_of_luggage INT, IN cost_per_day DECIMAL(10,2), IN late_fee_per_hour DECIMAL(10,2), IN availability_car_flag INT, IN owner_first_name VARCHAR(50), IN owner_middle_name VARCHAR(50), IN owner_last_name VARCHAR(50), IN email VARCHAR(50))
+-- BEGIN
+--     -- Insert owner details into Owner table
+--     INSERT INTO Owner (first_name, middle_name, last_name) VALUES (owner_first_name, owner_middle_name, owner_last_name);
+--     
+--     -- Get owner ID
+--     SET @owner_id = LAST_INSERT_ID();
+--     
+--     -- Insert car category details into CarCategory table
+--     INSERT INTO CarCategory (number_of_persons, number_of_luggage, cost_per_day, late_fee_per_hour) VALUES (number_of_persons, number_of_luggage, cost_per_day, late_fee_per_hour);
+--     
+--     -- Get model ID
+--     SET @model_id = LAST_INSERT_ID();
+--     
+--     -- Insert car details into Car table
+--     INSERT INTO Car (car_number, owner_id, model_id, availability_car_flag, email) VALUES (car_number, @owner_id, @model_id, availability_car_flag, email);
+-- END //
+-- DELIMITER ;
